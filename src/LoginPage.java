@@ -140,7 +140,7 @@ public class LoginPage extends javax.swing.JFrame {
                   int option = JOptionPane.showConfirmDialog(null, "Login Successful, Continue?", "Success", JOptionPane.YES_NO_OPTION);
                   if (option == JOptionPane.OK_OPTION){
                       this.dispose();
-                      MainPage mainPage = new MainPage(this.getLocation(), userNameInput);
+                      MainPage mainPage = new MainPage(this.getLocation(),sArray[2], sArray[3],sArray[4],sArray[5]);
                       mainPage.setVisible(true);
                       in.close();
                   }

@@ -80,7 +80,7 @@ public class CoursesPage extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
-        MainPage mainPage = new MainPage(this.getLocation(), null);
+        MainPage mainPage = new MainPage(this.getLocation(),null,null,null,null);
         mainPage.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 

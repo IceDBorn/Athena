@@ -13,17 +13,19 @@ import java.awt.*;
 public class MainPage extends javax.swing.JFrame {
     static Point point = null;
     
-    String user;
+
 
     /**
      * Creates new form MainPage
      */
-    public MainPage(Point point, String user) {
+    public MainPage(Point point,String onom,String epith,String email,String Role) {
         initComponents();
         this.point = point;
         this.setLocation(point);
-        this.user = user;
-        nameLabel.setText("First name: ");
+        onoma.setText(onom);
+        rl.setText(Role);
+        epitheto.setText(epith);
+        mail.setText(email);
     }
 
     /**
@@ -42,6 +44,11 @@ public class MainPage extends javax.swing.JFrame {
         surnameLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         addressLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        onoma = new javax.swing.JLabel();
+        epitheto = new javax.swing.JLabel();
+        mail = new javax.swing.JLabel();
+        rl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(695, 425));
@@ -76,6 +83,14 @@ public class MainPage extends javax.swing.JFrame {
         addressLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         addressLabel.setText("Role:");
 
+        onoma.setText(" ");
+
+        epitheto.setText(" ");
+
+        mail.setText(" ");
+
+        rl.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,7 +110,14 @@ public class MainPage extends javax.swing.JFrame {
                                     .addComponent(surnameLabel)
                                     .addComponent(nameLabel)
                                     .addComponent(phoneLabel)
-                                    .addComponent(addressLabel))))
+                                    .addComponent(addressLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(onoma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(epitheto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(mail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rl, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -107,14 +129,23 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headerLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(nameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(jLabel1)
+                    .addComponent(onoma, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(surnameLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(surnameLabel)
+                    .addComponent(epitheto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(phoneLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneLabel)
+                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(addressLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(rl, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logoutButton)
@@ -171,7 +202,7 @@ public class MainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPage(point, null).setVisible(true);
+                new MainPage(point,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -179,10 +210,15 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
     private javax.swing.JButton coursesButton;
+    private javax.swing.JLabel epitheto;
     private javax.swing.JLabel headerLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel mail;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel onoma;
     private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel rl;
     private javax.swing.JLabel surnameLabel;
     // End of variables declaration//GEN-END:variables
 }
