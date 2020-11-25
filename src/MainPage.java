@@ -4,17 +4,22 @@
  * and open the template in the editor.
  */
 
+import java.awt.*;
+
 /**
  *
  * @author IceDBorn
  */
 public class MainPage extends javax.swing.JFrame {
+    static Point point = null;
 
     /**
      * Creates new form MainPage
      */
-    public MainPage() {
+    public MainPage(Point point) {
         initComponents();
+        this.point = point;
+        this.setLocation(point);
     }
 
     /**
@@ -28,8 +33,14 @@ public class MainPage extends javax.swing.JFrame {
 
         logoutButton = new javax.swing.JButton();
         coursesButton = new javax.swing.JButton();
+        headerLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        surnameLabel = new javax.swing.JLabel();
+        phoneLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(695, 425));
 
         logoutButton.setText("Logout");
         logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -45,25 +56,66 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
+        headerLabel.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        headerLabel.setText("International Hellenic University");
+
+        nameLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        nameLabel.setText("Name:");
+
+        surnameLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        surnameLabel.setText("Last name:");
+
+        phoneLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        phoneLabel.setText("Phone:");
+
+        addressLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        addressLabel.setText("Address:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(227, 227, 227)
-                .addComponent(logoutButton)
-                .addGap(102, 102, 102)
-                .addComponent(coursesButton)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(242, 242, 242)
+                                .addComponent(logoutButton)
+                                .addGap(59, 59, 59)
+                                .addComponent(coursesButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(surnameLabel)
+                                    .addComponent(nameLabel)
+                                    .addComponent(phoneLabel)
+                                    .addComponent(addressLabel))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(headerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(443, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(headerLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(nameLabel)
+                .addGap(40, 40, 40)
+                .addComponent(surnameLabel)
+                .addGap(40, 40, 40)
+                .addComponent(phoneLabel)
+                .addGap(40, 40, 40)
+                .addComponent(addressLabel)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logoutButton)
                     .addComponent(coursesButton))
-                .addGap(23, 23, 23))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -77,7 +129,11 @@ public class MainPage extends javax.swing.JFrame {
 
     private void coursesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesButtonActionPerformed
         this.dispose();
-        GradeApprovalPage gradeApprovalPage = new GradeApprovalPage();
+        CoursesPage coursesPage = new CoursesPage(this.getLocation());
+        coursesPage.setVisible(true);
+        
+        this.dispose();
+        GradesApprovalPage gradeApprovalPage = new GradesApprovalPage(this.getLocation());
         gradeApprovalPage.setVisible(true);
     }//GEN-LAST:event_coursesButtonActionPerformed
 
@@ -111,13 +167,18 @@ public class MainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPage().setVisible(true);
+                new MainPage(point).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addressLabel;
     private javax.swing.JButton coursesButton;
+    private javax.swing.JLabel headerLabel;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel surnameLabel;
     // End of variables declaration//GEN-END:variables
 }
