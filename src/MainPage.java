@@ -61,16 +61,16 @@ public class MainPage extends javax.swing.JFrame {
         headerLabel.setText("International Hellenic University");
 
         nameLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        nameLabel.setText("Name:");
+        nameLabel.setText("First name:");
 
         surnameLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         surnameLabel.setText("Last name:");
 
         phoneLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        phoneLabel.setText("Phone:");
+        phoneLabel.setText("Email        :");
 
         addressLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        addressLabel.setText("Address:");
+        addressLabel.setText("Role         :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

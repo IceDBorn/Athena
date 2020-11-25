@@ -42,6 +42,7 @@ public class LoginPage extends javax.swing.JFrame {
         usernameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         passwordField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        passwordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         usernameLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         usernameLabel.setText("Username:");
