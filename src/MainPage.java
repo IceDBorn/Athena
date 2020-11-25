@@ -12,14 +12,18 @@ import java.awt.*;
  */
 public class MainPage extends javax.swing.JFrame {
     static Point point = null;
+    
+    String user;
 
     /**
      * Creates new form MainPage
      */
-    public MainPage(Point point) {
+    public MainPage(Point point, String user) {
         initComponents();
         this.point = point;
         this.setLocation(point);
+        this.user = user;
+        nameLabel.setText("First name: ");
     }
 
     /**
@@ -67,10 +71,10 @@ public class MainPage extends javax.swing.JFrame {
         surnameLabel.setText("Last name:");
 
         phoneLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        phoneLabel.setText("Email        :");
+        phoneLabel.setText("Email:");
 
         addressLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        addressLabel.setText("Role         :");
+        addressLabel.setText("Role:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +171,7 @@ public class MainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPage(point).setVisible(true);
+                new MainPage(point, null).setVisible(true);
             }
         });
     }
