@@ -27,7 +27,7 @@ public class MainPage extends javax.swing.JFrame {
     private void initComponents() {
 
         logoutButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        coursesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,7 +38,12 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Action");
+        coursesButton.setText("Courses");
+        coursesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coursesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,8 +53,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(227, 227, 227)
                 .addComponent(logoutButton)
                 .addGap(102, 102, 102)
-                .addComponent(jButton2)
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addComponent(coursesButton)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,7 +62,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap(443, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logoutButton)
-                    .addComponent(jButton2))
+                    .addComponent(coursesButton))
                 .addGap(23, 23, 23))
         );
 
@@ -69,6 +74,12 @@ public class MainPage extends javax.swing.JFrame {
         LoginPage loginPage = new LoginPage();
         loginPage.setVisible(true);
     }//GEN-LAST:event_logoutButtonMouseClicked
+
+    private void coursesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesButtonActionPerformed
+        this.dispose();
+        GradeApprovalPage gradeApprovalPage = new GradeApprovalPage();
+        gradeApprovalPage.setVisible(true);
+    }//GEN-LAST:event_coursesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +117,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton coursesButton;
     private javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
 }

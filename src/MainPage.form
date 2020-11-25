@@ -27,8 +27,8 @@
               <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
               <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="256" max="32767" attributes="0"/>
+              <Component id="coursesButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="246" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,7 +38,7 @@
               <EmptySpace pref="443" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="coursesButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -54,10 +54,13 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutButtonMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="coursesButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Action"/>
+        <Property name="text" type="java.lang.String" value="Courses"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="coursesButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
