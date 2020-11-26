@@ -122,13 +122,15 @@ public class LoginPage extends javax.swing.JFrame {
     }
     
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-
+     int j=0;
      String userNameInput = usernameField.getText();
      String passwordInput = passwordField.getText();
      try {
             Scanner in = new Scanner(new File("USERDATA.txt"));
             while (in.hasNextLine())
             {
+              WrongCredentials.setVisible(false);     //exafanizei to wrong credential
+              j=1+j;                                 //gia to wrong credential
               String s = in.nextLine();  
               String[] sArray = s.split(",");
               
@@ -150,7 +152,7 @@ public class LoginPage extends javax.swing.JFrame {
                     in.close();
               }else
               {
-                WrongCredentials.setVisible(true);
+                  if (j>=5){WrongCredentials.setVisible(true);}  //gia na exafanizei to wrong credentials
               }
             }
         } catch (FileNotFoundException e) {
