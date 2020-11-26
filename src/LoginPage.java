@@ -155,17 +155,10 @@ public class LoginPage extends javax.swing.JFrame {
 
               if (userNameInput.equals(sArray[0]) && passwordInput.equals(sArray[1]))
               {
-                  int option = JOptionPane.showConfirmDialog(null, "Login Successful, Continue?", "Success", JOptionPane.YES_NO_OPTION);
-                  if (option == JOptionPane.OK_OPTION){
                       this.dispose();
                       MainPage mainPage = new MainPage(this.getLocation(),sArray[2], sArray[3],sArray[4],sArray[5]);
                       mainPage.setVisible(true);
                       in.close();
-                  }
-                  else if (option == JOptionPane.CANCEL_OPTION){
-                      JOptionPane.showMessageDialog(this, "You Pressed Cancel button!");
-                  }
-                    in.close();
               }else
               {
                   if (j>=count){WrongCredentials.setVisible(true);}  //gia na exafanizei to wrong credentials
