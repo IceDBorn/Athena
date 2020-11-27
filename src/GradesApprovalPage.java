@@ -197,7 +197,7 @@ public class GradesApprovalPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "No Course Selected...", "Oops..", 1);
         }else{
             int value = approvedList.getSelectedIndex();
-            jlist1model.addElement(str2);
+            jlist1model.addElement(str2.replaceAll("approved", "pending"));
             pendingList.setModel(jlist1model);
 
             if(jlist2model.getSize()!=0){
