@@ -2,6 +2,8 @@ import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 import java.util.Vector;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
 
 public class GradesApprovalPage extends javax.swing.JFrame {
@@ -178,7 +180,7 @@ public class GradesApprovalPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "No Course Selected...", "Oops..", 1);
         }else{
             int value = pendingList.getSelectedIndex();
-            jlist2model.addElement(str2);
+            jlist2model.addElement(str2.replaceAll("pending", "approved"));
             approvedList.setModel(jlist2model);
 
             if(jlist1model.getSize()!=0){
