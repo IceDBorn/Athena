@@ -167,11 +167,13 @@ public class MainPage extends javax.swing.JFrame {
         if (rl.getText().equals("Professor")) {
             this.setVisible(false);
             CoursesPage coursesPage = new CoursesPage(this.getLocation(), this, user);
+            coursesPage.setTitle("Courses");
             coursesPage.setVisible(true);
         }
         else {
             this.setVisible(false);
             GradesApprovalPage gradeApprovalPage = new GradesApprovalPage(this.getLocation(), this);
+            gradeApprovalPage.setTitle("Grade Approvals");
             gradeApprovalPage.setVisible(true);
         }
     }//GEN-LAST:event_coursesButtonActionPerformed
