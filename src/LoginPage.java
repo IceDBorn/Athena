@@ -127,8 +127,6 @@ public class LoginPage extends javax.swing.JFrame {
      String userNameInput = usernameField.getText();
      String passwordInput = passwordField.getText();
      
-     
-     
      try {                                  //metra tis grames tou arxeiou 
       File file = new File("USERDATA.txt");
       Scanner sc = new Scanner(file);
@@ -150,15 +148,12 @@ public class LoginPage extends javax.swing.JFrame {
               String s = in.nextLine();  
               String[] sArray = s.split(",");
               
-              System.out.println(sArray[0]); //Just to verify that file is being read
-              System.out.println(sArray[1]);
 
               if (userNameInput.equals(sArray[0]) && passwordInput.equals(sArray[1]))
               {
                       this.dispose();
                       MainPage mainPage = new MainPage(this.getLocation(),sArray[2], sArray[3],sArray[4],sArray[5]);
                       mainPage.setVisible(true);
-                      in.close();
               }else
               {
                   if (j>=count){WrongCredentials.setVisible(true);}  //gia na exafanizei to wrong credentials
