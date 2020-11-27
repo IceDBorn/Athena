@@ -8,7 +8,7 @@ public class GradesApprovalPage extends javax.swing.JFrame {
     static Point point;
     DefaultListModel jlist1model,jlist2model;
     boolean flag;
-
+    File file = new File("grades.txt");
     static JFrame parent;
     
     public GradesApprovalPage(Point point, JFrame parent) {
@@ -30,9 +30,16 @@ public class GradesApprovalPage extends javax.swing.JFrame {
 
                 for(int i=0;i<val;i++) {
                     String ss = br.readLine();
+                    System.out.println(ss);
+                    if(ss.contains("pending")) { 
                     jlist1model.addElement(ss);
+                    pendingList.setModel(jlist1model);
+                    }
+                    else {
+                    jlist2model.addElement(ss);
+                    approvedList.setModel(jlist2model);
+                    }
                 }
-                pendingList.setModel(jlist1model);
                 flag = false;
             }catch(Exception e) {
                 System.out.println("br: " + br + "\nException: "+e);
@@ -44,28 +51,6 @@ public class GradesApprovalPage extends javax.swing.JFrame {
                 }
             }
         }
-        
-        File file = new File("grades.txt");
-
-try {
-    Scanner scanner = new Scanner(file);
-
-    //now read the file line by line...
-    int lineNum = 0;
-    while (scanner.hasNextLine()) {
-        String line = scanner.nextLine();
-        lineNum++;
-        if(line.contains("pending")) { 
-            jlist2model.addElement(line);
-            approvedList.setModel(jlist2model);
-        }
-        
-    }
-} catch(FileNotFoundException e) { 
-    //handle this
-}
-        
-        
     }
 
     /**
