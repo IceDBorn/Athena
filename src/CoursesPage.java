@@ -6,6 +6,9 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  *
@@ -14,15 +17,55 @@ import java.awt.*;
 public class CoursesPage extends javax.swing.JFrame {
     static Point point = null;
     static JFrame parent;
+    DefaultListModel jlist1model,jlist2model;
 
     /**
      * Creates new form teacherPage
      */
-    public CoursesPage(Point point, JFrame parent) {
+    public CoursesPage(Point point, JFrame parent, String user) {
         initComponents();
         this.point = point;
         this.setLocation(point);
         this.parent = parent;
+
+        int count = 0;
+        int j = 0;
+        jlist1model = new DefaultListModel();
+        jlist2model = new DefaultListModel();
+
+        try {                                  //metra tis grames tou arxeiou
+            File file = new File("grades.txt");
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()) {
+                sc.nextLine();
+                count++;
+            }
+            sc.close();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
+        try {
+            Scanner in = new Scanner(new File("grades.txt"));
+            while (in.hasNextLine())
+            {    //exafanizei to wrong credential
+                j=1+j;                                 //gia to wrong credential
+                String s = in.nextLine();
+                String[] sArray = s.split(",");
+
+                System.out.println(sArray[0]); //Just to verify that file is being read
+
+                if (user.equals(sArray[0]))
+                {
+                    jlist1model.addElement(s);
+                    studentsList.setModel(jlist1model);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null,
+                    "User Database Not Found", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -134,7 +177,7 @@ public class CoursesPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CoursesPage(point, parent).setVisible(true);
+                new CoursesPage(point, parent, null).setVisible(true);
             }
         });
     }

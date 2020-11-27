@@ -12,13 +12,13 @@ import java.awt.*;
  */
 public class MainPage extends javax.swing.JFrame {
     static Point point = null;
-    
+    String user;
 
 
     /**
      * Creates new form MainPage
      */
-    public MainPage(Point point,String onom,String epith,String email,String Role) {
+    public MainPage(Point point,String onom,String epith,String email,String Role, String user) {
         initComponents();
         this.point = point;
         this.setLocation(point);
@@ -26,6 +26,7 @@ public class MainPage extends javax.swing.JFrame {
         rl.setText(Role);
         epitheto.setText(epith);
         mail.setText(email);
+        this.user = user;
     }
 
     /**
@@ -165,7 +166,7 @@ public class MainPage extends javax.swing.JFrame {
     private void coursesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesButtonActionPerformed
         if (rl.getText().equals("Professor")) {
             this.setVisible(false);
-            CoursesPage coursesPage = new CoursesPage(this.getLocation(), this);
+            CoursesPage coursesPage = new CoursesPage(this.getLocation(), this, user);
             coursesPage.setVisible(true);
         }
         else {
@@ -205,7 +206,7 @@ public class MainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPage(point,null,null,null,null).setVisible(true);
+                new MainPage(point,null,null,null,null, null).setVisible(true);
             }
         });
     }

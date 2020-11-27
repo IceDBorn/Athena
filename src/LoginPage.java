@@ -152,7 +152,7 @@ public class LoginPage extends javax.swing.JFrame {
               if (userNameInput.equals(sArray[0]) && passwordInput.equals(sArray[1]))
               {
                       this.dispose();
-                      MainPage mainPage = new MainPage(this.getLocation(),sArray[2], sArray[3],sArray[4],sArray[5]);
+                      MainPage mainPage = new MainPage(this.getLocation(),sArray[2], sArray[3],sArray[4],sArray[5], userNameInput);
                       mainPage.setVisible(true);
               }else
               {
