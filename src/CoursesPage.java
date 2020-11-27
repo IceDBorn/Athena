@@ -17,7 +17,8 @@ import java.util.Scanner;
 public class CoursesPage extends javax.swing.JFrame {
     static Point point = null;
     static JFrame parent;
-    DefaultListModel jlist1model,jlist2model;
+    DefaultListModel jlist1model, jlist2model;
+    String user;
 
     /**
      * Creates new form teacherPage
@@ -32,11 +33,12 @@ public class CoursesPage extends javax.swing.JFrame {
         int j = 0;
         jlist1model = new DefaultListModel();
         jlist2model = new DefaultListModel();
+        this.user = user;
 
         try {                                  //metra tis grames tou arxeiou
             File file = new File("grades.txt");
             Scanner sc = new Scanner(file);
-            while(sc.hasNextLine()) {
+            while (sc.hasNextLine()) {
                 sc.nextLine();
                 count++;
             }
@@ -47,16 +49,14 @@ public class CoursesPage extends javax.swing.JFrame {
 
         try {
             Scanner in = new Scanner(new File("grades.txt"));
-            while (in.hasNextLine())
-            {    //exafanizei to wrong credential
-                j=1+j;                                 //gia to wrong credential
+            while (in.hasNextLine()) {    //exafanizei to wrong credential
+                j = 1 + j;                                 //gia to wrong credential
                 String s = in.nextLine();
                 String[] sArray = s.split(",");
 
                 System.out.println(sArray[0]); //Just to verify that file is being read
 
-                if (user.equals(sArray[0]))
-                {
+                if (user.equals(sArray[0])) {
                     if (jlist1model.getSize() > 0) {
                         boolean flag = true;
                         for (int i = 0; i < jlist1model.getSize(); i++) {
@@ -67,8 +67,7 @@ public class CoursesPage extends javax.swing.JFrame {
                         if (flag) {
                             jlist1model.addElement(sArray[2]);
                         }
-                    }
-                    else {
+                    } else {
                         jlist1model.addElement(sArray[2]);
                     }
                 }
@@ -103,6 +102,11 @@ public class CoursesPage extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        studentsList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentsListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(studentsList);
 
         backButton.setText("Back");
@@ -112,10 +116,10 @@ public class CoursesPage extends javax.swing.JFrame {
             }
         });
 
-        coursesList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        coursesList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                coursesListKeyReleased(evt);
+            }
         });
         jScrollPane2.setViewportView(coursesList);
 
@@ -156,6 +160,56 @@ public class CoursesPage extends javax.swing.JFrame {
 //        MainPage mainPage = new MainPage(this.getLocation(),null,null,null,null);
 //        mainPage.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void studentsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsListMouseClicked
+        int count = 0;
+        int j = 0;
+        jlist1model = new DefaultListModel();
+        jlist2model = new DefaultListModel();
+
+        try {                                  //metra tis grames tou arxeiou
+            File file = new File("grades.txt");
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                sc.nextLine();
+                count++;
+            }
+            sc.close();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
+        try {
+            Scanner in = new Scanner(new File("grades.txt"));
+            while (in.hasNextLine()) {    //exafanizei to wrong credential
+                j = 1 + j;                                 //gia to wrong credential
+                String s = in.nextLine();
+                String[] sArray = s.split(",");
+
+                System.out.println(sArray[0]); //Just to verify that file is being read
+                try {
+                    if (studentsList.getSelectedValue().equals(sArray[2]) && user.equals(sArray[0])) {
+                        jlist1model.addElement(sArray[1] + " " +sArray[3]);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                coursesList.setModel(jlist1model);
+            }
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null,
+                    "User Database Not Found", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_studentsListMouseClicked
+
+    private void coursesListKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_coursesListKeyReleased
+        String value = coursesList.getSelectedValue();
+        StringBuffer sb= new StringBuffer(value);
+        sb.deleteCharAt(sb.length()-1);
+        String s = (String)JOptionPane.showInputDialog("Set grade");
+        jlist1model.setElementAt(sb + s, coursesList.getSelectedIndex());
+    }//GEN-LAST:event_coursesListKeyReleased
 
     /**
      * @param args the command line arguments
