@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.io.*;
+import java.util.Scanner;
 import javax.swing.*;
-import java.util.Vector;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
 
 public class GradesApprovalPage extends javax.swing.JFrame {
@@ -46,6 +44,28 @@ public class GradesApprovalPage extends javax.swing.JFrame {
                 }
             }
         }
+        
+        File file = new File("grades.txt");
+
+try {
+    Scanner scanner = new Scanner(file);
+
+    //now read the file line by line...
+    int lineNum = 0;
+    while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        lineNum++;
+        if(line.contains("pending")) { 
+            jlist2model.addElement(line);
+            approvedList.setModel(jlist2model);
+        }
+        
+    }
+} catch(FileNotFoundException e) { 
+    //handle this
+}
+        
+        
     }
 
     /**
