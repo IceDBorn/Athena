@@ -163,7 +163,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonMouseClicked
 
     private void coursesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesButtonActionPerformed
-        if (rl.getText().equals("professor")) {
+        if (rl.getText().equals("Professor")) {
             this.setVisible(false);
             CoursesPage coursesPage = new CoursesPage(this.getLocation(), this);
             coursesPage.setVisible(true);
