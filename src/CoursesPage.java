@@ -189,7 +189,7 @@ public class CoursesPage extends javax.swing.JFrame {
                 System.out.println(sArray[0]); //Just to verify that file is being read
                 try {
                     if (studentsList.getSelectedValue().equals(sArray[2]) && user.equals(sArray[0])) {
-                        jlist1model.addElement(sArray[1] + " " +sArray[3]);
+                        jlist1model.addElement(sArray[1] + ": " +sArray[3]);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
