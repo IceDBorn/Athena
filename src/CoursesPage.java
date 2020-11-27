@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -12,14 +13,16 @@ import java.awt.*;
  */
 public class CoursesPage extends javax.swing.JFrame {
     static Point point = null;
+    static JFrame parent;
 
     /**
      * Creates new form teacherPage
      */
-    public CoursesPage(Point point) {
+    public CoursesPage(Point point, JFrame parent) {
         initComponents();
         this.point = point;
         this.setLocation(point);
+        this.parent = parent;
     }
 
     /**
@@ -79,9 +82,10 @@ public class CoursesPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        parent.setVisible(true);
         this.dispose();
-        MainPage mainPage = new MainPage(this.getLocation(),null,null,null,null);
-        mainPage.setVisible(true);
+//        MainPage mainPage = new MainPage(this.getLocation(),null,null,null,null);
+//        mainPage.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
@@ -117,7 +121,7 @@ public class CoursesPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CoursesPage(point).setVisible(true);
+                new CoursesPage(point, parent).setVisible(true);
             }
         });
     }

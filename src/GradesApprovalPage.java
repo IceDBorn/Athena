@@ -9,11 +9,14 @@ public class GradesApprovalPage extends javax.swing.JFrame {
     DefaultListModel jlist1model,jlist2model;
     String str[] = {"one", "two", "three"};
     boolean flag;
+
+    static JFrame parent;
     
-    public GradesApprovalPage(Point point) {
+    public GradesApprovalPage(Point point, JFrame parent) {
         initComponents();
         this.point = point;
         this.setLocation(point);
+        this.parent = parent;
 
         jlist1model = new DefaultListModel();
         jlist2model = new DefaultListModel();
@@ -270,8 +273,7 @@ public class GradesApprovalPage extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
-        MainPage mainPage = new MainPage(this.getLocation(),null,null,null,null);
-        mainPage.setVisible(true);
+        parent.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
@@ -305,7 +307,7 @@ DefaultListModel<String> listmodel;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GradesApprovalPage(point).setVisible(true);
+                new GradesApprovalPage(point, parent).setVisible(true);
             }
         });
     }
