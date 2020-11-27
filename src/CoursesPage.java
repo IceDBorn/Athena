@@ -57,10 +57,23 @@ public class CoursesPage extends javax.swing.JFrame {
 
                 if (user.equals(sArray[0]))
                 {
-                    jlist1model.addElement(s);
-                    studentsList.setModel(jlist1model);
+                    if (jlist1model.getSize() > 0) {
+                        boolean flag = true;
+                        for (int i = 0; i < jlist1model.getSize(); i++) {
+                            if (jlist1model.getElementAt(i).equals(sArray[2])) {
+                                flag = false;
+                            }
+                        }
+                        if (flag) {
+                            jlist1model.addElement(sArray[2]);
+                        }
+                    }
+                    else {
+                        jlist1model.addElement(sArray[2]);
+                    }
                 }
             }
+            studentsList.setModel(jlist1model);
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null,
                     "User Database Not Found", "Error",
