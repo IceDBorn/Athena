@@ -54,8 +54,6 @@ public class CoursesPage extends javax.swing.JFrame {
                 String s = in.nextLine();
                 String[] sArray = s.split(",");
 
-                System.out.println(sArray[0]); //Just to verify that file is being read
-
                 if (user.equals(sArray[0])) {
                     if (jlist1model.getSize() > 0) {
                         boolean flag = true;
@@ -186,7 +184,6 @@ public class CoursesPage extends javax.swing.JFrame {
                 String s = in.nextLine();
                 String[] sArray = s.split(",");
 
-                System.out.println(sArray[0]); //Just to verify that file is being read
                 try {
                     if (studentsList.getSelectedValue().equals(sArray[2]) && user.equals(sArray[0])) {
                         jlist1model.addElement(sArray[1] + ": " +sArray[3]);
