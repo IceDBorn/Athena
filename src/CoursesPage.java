@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -19,6 +20,7 @@ public class CoursesPage extends javax.swing.JFrame {
     static JFrame parent;
     DefaultListModel jlist1model, jlist2model;
     String user;
+    int lastEditedLength = 1;
 
     /**
      * Creates new form teacherPage
@@ -185,8 +187,10 @@ public class CoursesPage extends javax.swing.JFrame {
                 String[] sArray = s.split(",");
 
                 try {
-                    if (studentsList.getSelectedValue().equals(sArray[2]) && user.equals(sArray[0])) {
-                        jlist1model.addElement(sArray[1] + ": " +sArray[3]);
+                    if (sArray.length > 1) {
+                        if (studentsList.getSelectedValue().equals(sArray[2]) && user.equals(sArray[0])) {
+                            jlist1model.addElement(sArray[1] + ": " + sArray[3]);
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -202,10 +206,57 @@ public class CoursesPage extends javax.swing.JFrame {
 
     private void coursesListKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_coursesListKeyReleased
         String value = coursesList.getSelectedValue();
-        StringBuffer sb= new StringBuffer(value);
-        sb.deleteCharAt(sb.length()-1);
-        String s = (String)JOptionPane.showInputDialog("Set grade");
-        jlist1model.setElementAt(sb + s, coursesList.getSelectedIndex());
+        StringBuffer sb = new StringBuffer(value);
+        String setGradeText = (String)JOptionPane.showInputDialog("Set grade");
+        if (setGradeText != null && Integer.parseInt(setGradeText) > -1 && Integer.parseInt(setGradeText) < 11) {
+            for (int i = 0; i < 2; i++) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+            if (setGradeText.length() == 1) {
+                jlist1model.setElementAt(sb + "0" + setGradeText, coursesList.getSelectedIndex());
+            }
+            else {
+                jlist1model.setElementAt(sb + setGradeText, coursesList.getSelectedIndex());
+            }
+            try {
+                Scanner in = new Scanner(new File("grades.txt"));
+                int count = -1;
+                for (int i = 0; i < lastEditedLength + 1; i++) {
+                    sb = sb.deleteCharAt(sb.length() - 1);
+                }
+                while (in.hasNextLine()) {
+                    String s = in.nextLine();
+                    String[] sArray = s.split(",");
+                    if (sArray.length > 1) {
+                        if (sArray[2].equals(studentsList.getSelectedValue()) && sArray[1].equals(sb.toString())) {
+                            if (setGradeText.length() == 1) {
+                                sArray[3] = "0" + setGradeText;
+                            }
+                            else {
+                                sArray[3] = setGradeText;
+                            }
+                            StringBuffer sArrayBuffer = new StringBuffer(sArray[0]);
+                            for (int i = 1; i < sArray.length; i++) {
+                                sArrayBuffer.append(",").append(sArray[i]);
+                            }
+                            jlist2model.addElement(sArrayBuffer);
+                        } else {
+                            jlist2model.addElement(s);
+                        }
+                    }
+                    count++;
+                }
+                PrintWriter writer = new PrintWriter("grades.txt");
+                writer.println(count);
+                for (int i = 0; i < jlist2model.getSize(); i++) {
+                    writer.println(jlist2model.getElementAt(i));
+                }
+                writer.close();
+                jlist2model.removeAllElements();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_coursesListKeyReleased
 
     /**
