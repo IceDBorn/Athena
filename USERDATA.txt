@@ -1,6 +1,6 @@
-vasilis,vas,Kostadinos,Gianou,vasilis@teithe.gr,Undergraduate,programming,networking
-alex,ale,Alexandros,Patatoulas,Alex@teithe.gr,Undergraduate,maths,programming
-jim,jim,Dimitris,Vlaxos,jim@teithe.gr,Undergraduate,it,maths,science
+vasilis,vas,Kostadinos,Gianou,vasilis@teithe.gr,Undergraduate
+alex,ale,Alexandros,Patatoulas,Alex@teithe.gr,Undergraduate
+jim,jim,Dimitris,Vlaxos,jim@teithe.gr,Undergraduate
 gianos,gia,Giannis,Georgiou,gianos@teithe.gr,Secretary
 andreas,and,Andreas,Galanelis,andreas@teithe.gr,Professor
 dimitra,dim,Dimitra,Gazoula,dimitra@teithe.gr,Professor
