@@ -174,7 +174,7 @@ public class GradesApprovalPage extends javax.swing.JFrame {
         
         PrintWriter writer = null;
         try{
-            writer = new PrintWriter("List.txt");
+            writer = new PrintWriter("grades.txt");
             writer.println(pending + approved);
             
             for(int i=0;i<pending;i++){
