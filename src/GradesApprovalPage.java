@@ -30,7 +30,6 @@ public class GradesApprovalPage extends javax.swing.JFrame {
 
                 for(int i=0;i<val;i++) {
                     String ss = br.readLine();
-                    System.out.println(ss);
                     if(ss.contains("pending")) { 
                     jlist1model.addElement(ss);
                     pendingList.setModel(jlist1model);
@@ -42,12 +41,12 @@ public class GradesApprovalPage extends javax.swing.JFrame {
                 }
                 flag = false;
             }catch(Exception e) {
-                System.out.println("br: " + br + "\nException: "+e);
+                System.out.println("\nException: "+e);
             }finally{
                 try{
                     br.close();
                 }catch(Exception e){
-                    System.out.println("br: " + br + "\nException: "+e);
+                    System.out.println("\nException: "+e);
                 }
             }
         }
@@ -62,6 +61,8 @@ public class GradesApprovalPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        finaljList = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         pendingList = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -70,6 +71,13 @@ public class GradesApprovalPage extends javax.swing.JFrame {
         toRight = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
+
+        finaljList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(finaljList);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -161,21 +169,26 @@ public class GradesApprovalPage extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        int val = pendingList.getModel().getSize(); 
+        int pending = pendingList.getModel().getSize(); 
+        int approved = approvedList.getModel().getSize(); 
         
         PrintWriter writer = null;
         try{
             writer = new PrintWriter("List.txt");
-            writer.println(val);
+            writer.println(pending + approved);
             
-            for(int i=0;i<val;i++){
+            for(int i=0;i<pending;i++){
                 writer.println(pendingList.getModel().getElementAt(i));
+            }
+            for(int i=0;i<approved;i++){
+                writer.println(approvedList.getModel().getElementAt(i));
             }
         }catch(Exception e){
                   System.out.println("Exception: "+e);
               }finally{
             writer.close();
         }
+        
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void toLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toLeftActionPerformed
@@ -256,8 +269,10 @@ DefaultListModel<String> listmodel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> approvedList;
     private javax.swing.JButton backButton;
+    private javax.swing.JList<String> finaljList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<String> pendingList;
     private javax.swing.JButton saveButton;
     private javax.swing.JButton toLeft;
