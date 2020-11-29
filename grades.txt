@@ -1,8 +1,8 @@
 7
-dimitra,networking,vasilis,10,pending
 gioklou,it,jim,08,pending
-andreas,maths,alex,05,approved
-andreas,programming,alex,07,approved
+dimitra,networking,vasilis,10,pending
+andreas,maths,jim,00,pending
+andreas,programming,vasilis,05,pending
+andreas,maths,alex,10,approved
+andreas,programming,alex,03,approved
 dimitra,science,jim,10,approved
-andreas,maths,jim,00,approved
-andreas,programming,vasilis,05,approved
