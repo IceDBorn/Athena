@@ -53,12 +53,12 @@ public class CoursesPage extends javax.swing.JFrame {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         JScrollPane jScrollPane1 = new JScrollPane();
         studentsList = new javax.swing.JList<>();
-        // Variables declaration - do not modify//GEN-BEGIN:variables
+        // Variables declaration - do not modify                     
         JButton backButton = new JButton();
         JScrollPane jScrollPane2 = new JScrollPane();
         coursesList = new javax.swing.JList<>();
@@ -123,7 +123,7 @@ public class CoursesPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         parent.setVisible(true);
@@ -162,56 +162,70 @@ public class CoursesPage extends javax.swing.JFrame {
     private void coursesListKeyReleased() {//GEN-FIRST:event_coursesListKeyReleased
         String value = coursesList.getSelectedValue();
         StringBuilder sb = new StringBuilder(value);
-        String setGradeText = JOptionPane.showInputDialog("Set grade:");
-        if (setGradeText != null && Integer.parseInt(setGradeText) > -1 && Integer.parseInt(setGradeText) < 11) {
-            for (int i = 0; i < 2; i++) {
-                sb.deleteCharAt(sb.length() - 1);
-            }
-            if (setGradeText.length() == 1) {
-                studentsListModel.setElementAt(sb + "0" + setGradeText, coursesList.getSelectedIndex());
-            }
-            else {
-                studentsListModel.setElementAt(sb + setGradeText, coursesList.getSelectedIndex());
-            }
-            try {
-                Scanner in = new Scanner(new File("grades.txt"));
-                int count = -1;
-                for (int i = 0; i < lastEditedLength + 1; i++) {
+        String setGradeText = (String)JOptionPane.showInputDialog(
+                this,
+                "Set grade:",
+                "",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                null,
+                ""
+        );
+        try {
+            if (setGradeText != null && Integer.parseInt(setGradeText) > -1 && Integer.parseInt(setGradeText) < 11) {
+                for (int i = 0; i < 2; i++) {
                     sb.deleteCharAt(sb.length() - 1);
                 }
-                while (in.hasNextLine()) {
-                    String s = in.nextLine();
-                    String[] sArray = s.split(",");
-                    if (sArray.length > 1) {
-                        if (sArray[2].equals(studentsList.getSelectedValue()) && sArray[1].equals(sb.toString())) {
-                            if (setGradeText.length() == 1) {
-                                sArray[3] = "0" + setGradeText;
-                            }
-                            else {
-                                sArray[3] = setGradeText;
-                            }
-                            StringBuffer sArrayBuffer = new StringBuffer(sArray[0]);
-                            for (int i = 1; i < sArray.length; i++) {
-                                sArrayBuffer.append(",").append(sArray[i]);
-                            }
-                            coursesListModel.addElement(sArrayBuffer);
-                        } else {
-                            coursesListModel.addElement(s);
-                        }
+                if (setGradeText.length() == 1) {
+                    studentsListModel.setElementAt(sb + "0" + setGradeText, coursesList.getSelectedIndex());
+                } else {
+                    studentsListModel.setElementAt(sb + setGradeText, coursesList.getSelectedIndex());
+                }
+                try {
+                    Scanner in = new Scanner(new File("grades.txt"));
+                    int count = -1;
+                    for (int i = 0; i < lastEditedLength + 1; i++) {
+                        sb.deleteCharAt(sb.length() - 1);
                     }
-                    count++;
+                    while (in.hasNextLine()) {
+                        String s = in.nextLine();
+                        String[] sArray = s.split(",");
+                        if (sArray.length > 1) {
+                            if (sArray[2].equals(studentsList.getSelectedValue()) && sArray[1].equals(sb.toString())) {
+                                if (setGradeText.length() == 1) {
+                                    sArray[3] = "0" + setGradeText;
+                                } else {
+                                    sArray[3] = setGradeText;
+                                }
+                                StringBuffer sArrayBuffer = new StringBuffer(sArray[0]);
+                                for (int i = 1; i < sArray.length; i++) {
+                                    sArrayBuffer.append(",").append(sArray[i]);
+                                }
+                                coursesListModel.addElement(sArrayBuffer);
+                            } else {
+                                coursesListModel.addElement(s);
+                            }
+                        }
+                        count++;
+                    }
+                    PrintWriter writer = new PrintWriter("grades.txt");
+                    writer.println(count);
+                    for (int i = 0; i < coursesListModel.getSize(); i++) {
+                        writer.println(coursesListModel.getElementAt(i));
+                    }
+                    writer.close();
+                    coursesListModel.removeAllElements();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-                PrintWriter writer = new PrintWriter("grades.txt");
-                writer.println(count);
-                for (int i = 0; i < coursesListModel.getSize(); i++) {
-                    writer.println(coursesListModel.getElementAt(i));
-                }
-                writer.close();
-                coursesListModel.removeAllElements();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             }
+            else if (setGradeText != null){
+                JOptionPane.showMessageDialog(rootPane, "You can only type numbers between 0-10...", "Oops..", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "You can only type numbers between 0-10...", "Oops..", JOptionPane.INFORMATION_MESSAGE);
         }
+        studentsList.hasFocus();
     }//GEN-LAST:event_coursesListKeyReleased
 
     /**
@@ -244,5 +258,5 @@ public class CoursesPage extends javax.swing.JFrame {
 
     private javax.swing.JList<String> coursesList;
     private javax.swing.JList<String> studentsList;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

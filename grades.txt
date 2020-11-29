@@ -2,7 +2,7 @@
 gioklou,it,jim,08,pending
 dimitra,networking,vasilis,10,pending
 andreas,maths,jim,10,pending
+dimitra,science,jim,10,pending
 andreas,maths,alex,10,approved
 andreas,programming,alex,03,approved
-dimitra,science,jim,10,approved
-andreas,programming,vasilis,05,approved
+andreas,programming,vasilis,10,approved

@@ -145,11 +145,14 @@ public class MainPage extends javax.swing.JFrame {
             coursesPage.setTitle("Courses");
             coursesPage.setVisible(true);
         }
-        else {
+        else if (userRoleLabel.getText().equals("Secretary")){
             this.setVisible(false);
             GradesApprovalPage gradeApprovalPage = new GradesApprovalPage(this.getLocation(), this);
             gradeApprovalPage.setTitle("Grade Approvals");
             gradeApprovalPage.setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "You don't have access to this page...", "Oops..", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_coursesButtonActionPerformed
 
