@@ -1,7 +1,7 @@
 7
 gioklou,it,jim,08,pending
 dimitra,networking,vasilis,10,pending
-andreas,maths,jim,00,pending
+andreas,maths,jim,10,pending
 andreas,programming,vasilis,05,pending
 andreas,maths,alex,10,approved
 andreas,programming,alex,03,approved
