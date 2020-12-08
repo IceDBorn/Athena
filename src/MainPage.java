@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 public class MainPage extends javax.swing.JFrame {
     static Point point;
@@ -7,6 +8,10 @@ public class MainPage extends javax.swing.JFrame {
 
     public MainPage(Point point, String firstName, String lastName, String email, String role, String username) {
         initComponents();
+        this.setTitle("Main Page");
+        URL url = ClassLoader.getSystemResource( "icon.png" );
+        Image icon = new ImageIcon(url).getImage();
+        this.setIconImage(icon);  
         MainPage.point = point;
         this.setLocation(point);
         this.userFirstNameLabel.setText(firstName);
@@ -16,7 +21,7 @@ public class MainPage extends javax.swing.JFrame {
         this.username = username;
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         JButton logoutButton = new JButton();
@@ -25,7 +30,7 @@ public class MainPage extends javax.swing.JFrame {
         JLabel firstNameLabel = new JLabel();
         JLabel lastNameLabel = new JLabel();
         JLabel emailLabel = new JLabel();
-        // Variables declaration - do not modify//GEN-BEGIN:variables
+        // Variables declaration - do not modify                     
         JLabel roleLabel = new JLabel();
         userFirstNameLabel = new javax.swing.JLabel();
         userLastNameLabel = new javax.swing.JLabel();
@@ -130,7 +135,7 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     private void logoutButtonMouseClicked() {//GEN-FIRST:event_logoutButtonMouseClicked
         this.dispose();
@@ -185,5 +190,5 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel userEmailLabel;
     private javax.swing.JLabel userFirstNameLabel;
     private javax.swing.JLabel userRoleLabel;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

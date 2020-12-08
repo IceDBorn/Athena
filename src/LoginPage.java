@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.Scanner;
 import javax.swing.*;
 
@@ -9,6 +10,10 @@ public class LoginPage extends javax.swing.JFrame {
     public LoginPage() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Login Page");
+        URL url = ClassLoader.getSystemResource( "icon.png" );
+        Image icon = new ImageIcon(url).getImage();
+        this.setIconImage(icon);  
         WrongCredentials.setVisible(false);
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -16,32 +21,36 @@ public class LoginPage extends javax.swing.JFrame {
 
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
-        JLabel usernameLabel = new JLabel();
+        usernameLabel = new javax.swing.JLabel();
         WrongCredentials = new javax.swing.JLabel();
-        JButton loginButton = new JButton();
-        JLabel passwordLabel = new JLabel();
+        loginButton = new javax.swing.JButton();
+        passwordLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(695, 425));
 
-        usernameField.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
+        usernameField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         usernameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        passwordField.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
+        passwordField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         passwordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        usernameLabel.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
+        usernameLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         usernameLabel.setText("Username:");
 
-        WrongCredentials.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
+        WrongCredentials.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         WrongCredentials.setForeground(new java.awt.Color(252, 0, 0));
         WrongCredentials.setText("Wrong Credentials!");
 
-        loginButton.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         loginButton.setText("Login");
-        loginButton.addActionListener(evt -> loginButtonActionPerformed());
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
-        passwordLabel.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
+        passwordLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         passwordLabel.setText("Password:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,8 +100,8 @@ public class LoginPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed() {//GEN-FIRST:event_loginButtonActionPerformed
-     int j = 0;
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        int j = 0;
      int count = 0;
      String userNameInput = usernameField.getText();
      String passwordInput = passwordField.getText();
@@ -164,7 +173,10 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel WrongCredentials;
+    private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField usernameField;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

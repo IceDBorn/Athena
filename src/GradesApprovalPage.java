@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.io.*;
+import java.net.URL;
 import javax.swing.*;
 import javax.swing.DefaultListModel;
 
@@ -12,6 +13,10 @@ public class GradesApprovalPage extends javax.swing.JFrame {
     
     public GradesApprovalPage(Point point, JFrame parent) {
         initComponents();
+        this.setTitle("Grades Approval Page");
+        URL url = ClassLoader.getSystemResource( "icon.png" );
+        Image icon = new ImageIcon(url).getImage();
+        this.setIconImage(icon);  
         GradesApprovalPage.point = point;
         this.setLocation(point);
         GradesApprovalPage.parent = parent;

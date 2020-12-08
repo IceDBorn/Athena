@@ -3,6 +3,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.Scanner;
 
 public class CoursesPage extends javax.swing.JFrame {
@@ -15,6 +16,10 @@ public class CoursesPage extends javax.swing.JFrame {
 
     public CoursesPage(Point point, JFrame parent, String username) {
         initComponents();
+        this.setTitle("Courses Page");
+        URL url = ClassLoader.getSystemResource( "icon.png" );
+        Image icon = new ImageIcon(url).getImage();
+        this.setIconImage(icon);  
 
         CoursesPage.point = point;
         this.setLocation(point);
