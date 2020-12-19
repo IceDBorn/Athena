@@ -101,7 +101,7 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        int j = 0;
+     int j = 0;
      int count = 0;
      String userNameInput = usernameField.getText();
      String passwordInput = passwordField.getText();
